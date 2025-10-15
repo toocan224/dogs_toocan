@@ -1,0 +1,18 @@
+[
+  {
+    "Id": 638933039707429597,
+    "DogName": "Test",
+    "StartTime": "2025-08-01T10:00:00",
+    "EndTime": "2025-08-01T11:00:00",
+    "TrainingType": "Test",
+    "IsCompleted": false
+  },
+  {
+    "Id": 638933041928888690,
+    "DogName": "Rex",
+    "StartTime": "2025-08-01T10:00:00",
+    "EndTime": "2025-08-01T11:30:00",
+    "TrainingType": "Basic Commands",
+    "IsCompleted": false
+  }
+]

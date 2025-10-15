@@ -1,0 +1,46 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Dog Training Scheduler";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Dog Training Schedule</h1>
+    
+    <form method="post">
+        <div class="form-group">
+            <label for="dogName">Dog Name:</label>
+            <input type="text" class="form-control" id="dogName" name="DogName" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="startTime">Start Time:</label>
+            <input type="datetime-local" class="form-control" id="startTime" name="StartTime" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="endTime">End Time:</label>
+            <input type="datetime-local" class="form-control" id="endTime" name="EndTime" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="trainingType">Training Type:</label>
+            <select class="form-control" id="trainingType" name="TrainingType" required>
+                <option value="">Select training type</option>
+                <option value="Basic Commands">Basic Commands</option>
+                <option value="Agility">Agility</option>
+                <option value="Obedience">Obedience</option>
+                <option value="Behavior Correction">Behavior Correction</option>
+            </select>
+        </div>
+        
+        <button type="submit" class="btn btn-primary mt-3">Save Schedule</button>
+    </form>
+    
+    @if (!string.IsNullOrEmpty(Model.Message))
+    {
+        <div class="alert alert-@(Model.IsSuccess ? "success" : "danger") mt-3" role="alert">
+            @Model.Message
+        </div>
+    }
+</div>
