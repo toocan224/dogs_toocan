@@ -5,7 +5,7 @@ from random import randint
 import time
 import enum
 from model import prediction
-import PySide6
+# import PySide6
 # import ultralytics
 import sounddevice as sd
 import soundfile as sf

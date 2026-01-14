@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\dogs224",
+    "\\dogs224\\DogTrainingServer",
+    "\\dogs224\\DogTrainingServer\\DogTrainingApi",
+    "\\dogs224\\DogTrainingServer\\DogTrainingApi\\Controllers",
+    "\\dogs224\\DogTrainingServer\\DogTrainingApi\\Properties"
+  ],
+  "SelectedNode": "\\dogs224\\DogTrainingServer\\DogTrainingApi\\Controllers\\TrainingController.cs",
+  "PreviewInSolutionExplorer": false
+}
