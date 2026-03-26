@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 namespace DogTrainingApi.Models
 {
     public class TrainingSchedule
@@ -6,7 +7,14 @@ namespace DogTrainingApi.Models
         // public string? DogName { get; set; }
         public string? StartTime { get; set; }
         // public DateTime EndTime { get; set; }
-        public string? TrainingType { get; set; }
-        // public bool IsCompleted { get; set; }
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public TrainingType TrainingType { get; set; }
+    }
+
+    public enum TrainingType
+    {
+        Base,
+        Advanced
+
     }
 }

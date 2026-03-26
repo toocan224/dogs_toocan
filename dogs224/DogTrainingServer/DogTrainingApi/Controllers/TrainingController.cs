@@ -39,6 +39,7 @@ namespace DogTrainingApi.Controllers
         }
 
         [HttpPut("{id}")]
+        
         public IActionResult UpdateSchedule(long id, [FromBody] TrainingSchedule updated)
         {
             try
@@ -50,13 +51,17 @@ namespace DogTrainingApi.Controllers
                 var existing = schedules.FirstOrDefault(s => s.Id == id);
                 if (existing == null) return NotFound();
 
+                // Обновляем только те поля, что остались в модели
                 existing.StartTime = updated.StartTime;
                 existing.TrainingType = updated.TrainingType;
 
                 SaveSchedulesToFile(schedules);
-                return Ok(new { message = "Updated!" });
+                return Ok(new { message = "Schedule updated successfully!" });
             }
-            catch (Exception ex) { return StatusCode(500, ex.Message); }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error updating schedule: {ex.Message}");
+            }
         }
 
         [HttpDelete("{id}")]
@@ -75,18 +80,21 @@ namespace DogTrainingApi.Controllers
         {
             var errors = new List<string>();
 
-            // Проверка времени (формат 18:00)
+            // Проверка времени HH:mm (обязательно, так как в модели теперь string)
             if (string.IsNullOrWhiteSpace(schedule.StartTime))
             {
                 errors.Add("Time is required");
             }
-            else if (!Regex.IsMatch(schedule.StartTime, @"^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"))
+            else if (!System.Text.RegularExpressions.Regex.IsMatch(schedule.StartTime, @"^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"))
             {
-                errors.Add("Use HH:mm format (e.g. 18:30)");
+                errors.Add("Invalid time format. Use HH:mm");
             }
 
-            if (string.IsNullOrWhiteSpace(schedule.TrainingType))
-                errors.Add("Training type is required");
+            // Проверка Enum
+            if (!Enum.IsDefined(typeof(TrainingType), schedule.TrainingType))
+            {
+                errors.Add("Invalid training type");
+            }
 
             return errors;
         }

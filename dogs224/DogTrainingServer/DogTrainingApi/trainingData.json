@@ -1,18 +1,17 @@
 [
   {
     "Id": 638933039707429597,
-    "DogName": "Test",
     "StartTime": "2025-08-01T10:00:00",
-    "EndTime": "2025-08-01T11:00:00",
-    "TrainingType": "Test",
-    "IsCompleted": false
+    "TrainingType": "Test"
   },
   {
     "Id": 638933041928888690,
-    "DogName": "Rex Updated",
     "StartTime": "2026-08-02T10:00:00",
-    "EndTime": "2026-08-02T11:00:00",
-    "TrainingType": "Advanced Training",
-    "IsCompleted": true
+    "TrainingType": "Advanced Training"
+  },
+  {
+    "Id": 639101388329529993,
+    "StartTime": "11:01",
+    "TrainingType": "sittin"
   }
 ]
