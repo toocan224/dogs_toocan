@@ -1,15 +1,17 @@
 
 import roboflow
 
-rf = roboflow.Roboflow(api_key="Wb68uTXkugSzoRdiNY5P")
 
-project = rf.workspace().project("toocandogs")
-model = project.version("3").model
-# optionally, change the confidence and overlap thresholds
-# values are percentages
-model.confidence = 20
-model.overlap = 25
+def model_initialization(projectname = "toocandogs",api="Wb68uTXkugSzoRdiNY5P", version = "3"):
+    rf = roboflow.Roboflow(api_key="Wb68uTXkugSzoRdiNY5P")
 
+    project = rf.workspace().project("toocandogs")
+    model = project.version("3").model
+    # optionally, change the confidence and overlap thresholds
+    # values are percentages
+    model.confidence = 20
+    model.overlap = 25
+    return model
 # # predict on a local image
 # perdiction = model.predict('doog.jpg')
 # #
@@ -24,7 +26,7 @@ model.overlap = 25
 
 # Convert predictions to JSON
 
-def prediction(file_name):
+def prediction(file_name, model):
 
     return model.predict(file_name).json()
 perdiction = prediction('doog.jpg')

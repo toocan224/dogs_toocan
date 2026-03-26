@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DogTrainingApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+16992226f2b8fa73e03c0fd0e5c371e7c372e86f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+77fa5dd1633411adebe957df3d4bdb7511c072aa")]
 [assembly: System.Reflection.AssemblyProductAttribute("DogTrainingApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DogTrainingApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

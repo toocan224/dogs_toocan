@@ -1,10 +1,11 @@
-import schedule
+#import schedule
 import cv2
-from random import randint
+#from random import randint
 # import mediapipe
+from shagoviy import kormushka
 import time
 import enum
-from model import prediction
+from model import prediction, model_initialization
 # import PySide6
 # import ultralytics
 import sounddevice as sd
@@ -18,6 +19,7 @@ datafile = open('dog.txt', 'w')
 datafile.write('1')
 dog_position = dogpos.none
 print(dog_position.name)
+AIMODEL = model_initialization()
 def sound_play(command):
     audio_data, sample_rate = sf.read(f'{command}.wav')
     sd.play(audio_data, sample_rate)
@@ -68,7 +70,7 @@ def scan_of_dogs(needed_position):
         photo_name = "photo_.jpg"
         cv2.imwrite(photo_name, frame)
         print(f"Сохранено фото: photo_")
-        scan_predict = prediction('photo_.jpg')
+        scan_predict = prediction('photo_.jpg', AIMODEL)
         try:
             dog_position = (((scan_predict['predictions'])[0])['class'])
             print(dog_position)
@@ -87,6 +89,7 @@ def scan_of_dogs(needed_position):
         cv2.destroyAllWindows()
     textfile = open('dog.txt', 'w')
     if dog_position == needed_position:
+        kormushka.give()
         textfile.write('1')
     else:
         textfile.write('0')

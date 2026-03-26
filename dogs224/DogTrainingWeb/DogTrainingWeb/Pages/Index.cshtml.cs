@@ -1,4 +1,4 @@
-using DogTrainingWeb.Models;
+using DogTrainingApi.Models;
 using DogTrainingWeb.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -23,6 +23,7 @@ namespace DogTrainingWeb.Pages
 
         public void OnGet()
         {
+            Schedule ??= new TrainingSchedule();
         }
 
         public async Task<IActionResult> OnPostAsync()

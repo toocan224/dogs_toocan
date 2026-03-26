@@ -2,7 +2,7 @@ using DogTrainingApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using System.Text.Json;
-using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 
 namespace DogTrainingApi.Controllers
 {
@@ -13,175 +13,91 @@ namespace DogTrainingApi.Controllers
         private const string DataFilePath = "trainingData.json";
         private static readonly object _fileLock = new object();
 
-        // GET: api/training
         [HttpGet]
         public IActionResult GetAllSchedules()
         {
-            try
-            {
-                var schedules = ReadSchedulesFromFile();
-                return Ok(schedules);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Error reading schedules: {ex.Message}");
-            }
+            try { return Ok(ReadSchedulesFromFile()); }
+            catch (Exception ex) { return StatusCode(500, $"Error: {ex.Message}"); }
         }
 
-        // GET: api/training/{id}
-        [HttpGet("{id}")]
-        public IActionResult GetScheduleById(long id)
-        {
-            try
-            {
-                var schedules = ReadSchedulesFromFile();
-                var schedule = schedules.FirstOrDefault(s => s.Id == id);
-
-                if (schedule == null)
-                    return NotFound($"Schedule with ID {id} not found");
-
-                return Ok(schedule);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Error reading schedule: {ex.Message}");
-            }
-        }
-
-        // POST: api/training
         [HttpPost]
         public IActionResult SaveSchedule([FromBody] TrainingSchedule schedule)
         {
             try
             {
-                // Валидация
-                var validationResults = ValidateTrainingSchedule(schedule);
-                if (validationResults.Any())
-                    return BadRequest(validationResults);
+                var errors = ValidateTrainingSchedule(schedule);
+                if (errors.Any()) return BadRequest(errors);
 
-                // Генерируем ID
                 schedule.Id = DateTime.Now.Ticks;
-
-                // Читаем существующие данные
                 var schedules = ReadSchedulesFromFile();
-
-                // Добавляем новое расписание
                 schedules.Add(schedule);
-
-                // Сохраняем
                 SaveSchedulesToFile(schedules);
 
-                return Ok(new
-                {
-                    message = "Schedule saved successfully!",
-                    id = schedule.Id
-                });
+                return Ok(new { message = "Saved!", id = schedule.Id });
             }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
-            }
+            catch (Exception ex) { return StatusCode(500, ex.Message); }
         }
 
-        // PUT: api/training/{id}
         [HttpPut("{id}")]
-        public IActionResult UpdateSchedule(long id, [FromBody] TrainingSchedule updatedSchedule)
+        public IActionResult UpdateSchedule(long id, [FromBody] TrainingSchedule updated)
         {
             try
             {
-                // Валидация
-                var validationResults = ValidateTrainingSchedule(updatedSchedule);
-                if (validationResults.Any())
-                    return BadRequest(validationResults);
+                var errors = ValidateTrainingSchedule(updated);
+                if (errors.Any()) return BadRequest(errors);
 
                 var schedules = ReadSchedulesFromFile();
-                var existingSchedule = schedules.FirstOrDefault(s => s.Id == id);
+                var existing = schedules.FirstOrDefault(s => s.Id == id);
+                if (existing == null) return NotFound();
 
-                if (existingSchedule == null)
-                    return NotFound($"Schedule with ID {id} not found");
+                existing.StartTime = updated.StartTime;
+                existing.TrainingType = updated.TrainingType;
 
-                // Обновляем поля
-                existingSchedule.DogName = updatedSchedule.DogName;
-                existingSchedule.StartTime = updatedSchedule.StartTime;
-                existingSchedule.EndTime = updatedSchedule.EndTime;
-                existingSchedule.TrainingType = updatedSchedule.TrainingType;
-                existingSchedule.IsCompleted = updatedSchedule.IsCompleted;
-
-                // Сохраняем
                 SaveSchedulesToFile(schedules);
-
-                return Ok(new { message = "Schedule updated successfully!" });
+                return Ok(new { message = "Updated!" });
             }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Error updating schedule: {ex.Message}");
-            }
+            catch (Exception ex) { return StatusCode(500, ex.Message); }
         }
 
-        // DELETE: api/training/{id}
         [HttpDelete("{id}")]
         public IActionResult DeleteSchedule(long id)
         {
-            try
-            {
-                var schedules = ReadSchedulesFromFile();
-                var scheduleToRemove = schedules.FirstOrDefault(s => s.Id == id);
+            var schedules = ReadSchedulesFromFile();
+            var item = schedules.FirstOrDefault(s => s.Id == id);
+            if (item == null) return NotFound();
 
-                if (scheduleToRemove == null)
-                    return NotFound($"Schedule with ID {id} not found");
-
-                schedules.Remove(scheduleToRemove);
-                SaveSchedulesToFile(schedules);
-
-                return Ok(new { message = "Schedule deleted successfully!" });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Error deleting schedule: {ex.Message}");
-            }
+            schedules.Remove(item);
+            SaveSchedulesToFile(schedules);
+            return Ok(new { message = "Deleted!" });
         }
 
-        // GET: api/training/statistics
-        [HttpGet("statistics")]
-        public IActionResult GetStatistics()
+        private List<string> ValidateTrainingSchedule(TrainingSchedule schedule)
         {
-            try
-            {
-                var schedules = ReadSchedulesFromFile();
+            var errors = new List<string>();
 
-                var statistics = new
-                {
-                    TotalTrainings = schedules.Count,
-                    CompletedTrainings = schedules.Count(s => s.IsCompleted),
-                    UpcomingTrainings = schedules.Count(s => !s.IsCompleted && s.StartTime > DateTime.Now),
-                    TrainingsByType = schedules
-                        .GroupBy(s => s.TrainingType)
-                        .Select(g => new { Type = g.Key, Count = g.Count() }),
-                    TrainingsByDog = schedules
-                        .GroupBy(s => s.DogName)
-                        .Select(g => new { DogName = g.Key, Count = g.Count() }),
-                    AverageTrainingDuration = schedules.Any() ?
-                        schedules.Average(s => (s.EndTime - s.StartTime).TotalMinutes) : 0
-                };
-
-                return Ok(statistics);
-            }
-            catch (Exception ex)
+            // Проверка времени (формат 18:00)
+            if (string.IsNullOrWhiteSpace(schedule.StartTime))
             {
-                return StatusCode(500, $"Error calculating statistics: {ex.Message}");
+                errors.Add("Time is required");
             }
+            else if (!Regex.IsMatch(schedule.StartTime, @"^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"))
+            {
+                errors.Add("Use HH:mm format (e.g. 18:30)");
+            }
+
+            if (string.IsNullOrWhiteSpace(schedule.TrainingType))
+                errors.Add("Training type is required");
+
+            return errors;
         }
 
-        // Вспомогательные методы
         private List<TrainingSchedule> ReadSchedulesFromFile()
         {
             lock (_fileLock)
             {
-                if (!System.IO.File.Exists(DataFilePath))
-                    return new List<TrainingSchedule>();
-
-                var jsonData = System.IO.File.ReadAllText(DataFilePath);
-                return JsonSerializer.Deserialize<List<TrainingSchedule>>(jsonData) ?? new List<TrainingSchedule>();
+                if (!System.IO.File.Exists(DataFilePath)) return new List<TrainingSchedule>();
+                var json = System.IO.File.ReadAllText(DataFilePath);
+                return JsonSerializer.Deserialize<List<TrainingSchedule>>(json) ?? new List<TrainingSchedule>();
             }
         }
 
@@ -189,31 +105,9 @@ namespace DogTrainingApi.Controllers
         {
             lock (_fileLock)
             {
-                var options = new JsonSerializerOptions { WriteIndented = true };
-                System.IO.File.WriteAllText(DataFilePath, JsonSerializer.Serialize(schedules, options));
+                var json = JsonSerializer.Serialize(schedules, new JsonSerializerOptions { WriteIndented = true });
+                System.IO.File.WriteAllText(DataFilePath, json);
             }
-        }
-
-        private List<string> ValidateTrainingSchedule(TrainingSchedule schedule)
-        {
-            var errors = new List<string>();
-
-            if (string.IsNullOrWhiteSpace(schedule.DogName))
-                errors.Add("Dog name is required");
-
-            if (schedule.StartTime >= schedule.EndTime)
-                errors.Add("Start time must be before end time");
-
-            if (schedule.EndTime - schedule.StartTime < TimeSpan.FromMinutes(5))
-                errors.Add("Training duration must be at least 5 minutes");
-
-            if (schedule.StartTime < DateTime.Now.AddMinutes(-5))
-                errors.Add("Start time cannot be in the past");
-
-            if (string.IsNullOrWhiteSpace(schedule.TrainingType))
-                errors.Add("Training type is required");
-
-            return errors;
         }
     }
 }

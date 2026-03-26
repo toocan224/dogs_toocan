@@ -1,0 +1,4 @@
+{"sessionId":"ec1bf0","runId":"run1","hypothesisId":"A","location":"Pages/Index.cshtml.cs:OnGet","message":"Index OnGet","data":{"hasSchedule":true},"timestamp":1774458642366}
+{"sessionId":"ec1bf0","runId":"run1","hypothesisId":"B","location":"Pages/Index.cshtml.cs:OnPostAsync(entry)","message":"Index OnPostAsync entry","data":{"modelStateIsValid":true,"scheduleIsNull":false,"startTime":"23:00","trainingType":"gooning"},"timestamp":1774458669005}
+{"sessionId":"ec1bf0","runId":"run1","hypothesisId":"A","location":"Pages/Index.cshtml.cs:OnGet","message":"Index OnGet","data":{"hasSchedule":true},"timestamp":1774458723945}
+{"sessionId":"ec1bf0","runId":"run1","hypothesisId":"B","location":"Pages/Index.cshtml.cs:OnPostAsync(entry)","message":"Index OnPostAsync entry","data":{"modelStateIsValid":true,"scheduleIsNull":false,"startTime":"11:11","trainingType":"www"},"timestamp":1774458753530}
