@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DogTrainingWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e80995cc2bb176524c51728bf75b9129e2bc167d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dc789e49d5b910948a23d16e7efabe590cb4701f")]
 [assembly: System.Reflection.AssemblyProductAttribute("DogTrainingWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DogTrainingWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
