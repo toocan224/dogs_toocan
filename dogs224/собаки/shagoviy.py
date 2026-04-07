@@ -7,6 +7,7 @@ class kormushka:
         self.step = step
         self.direction = direction
     def give(self, stepscount):
+        
 
 kkk = kormushka(1,2)
 print(kkk.step)

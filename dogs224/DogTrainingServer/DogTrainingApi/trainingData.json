@@ -1,17 +1,32 @@
 [
   {
-    "Id": 638933039707429597,
-    "StartTime": "2025-08-01T10:00:00",
-    "TrainingType": "Test"
+    "Id": 639111762241588647,
+    "StartTime": "11:22",
+    "TrainingType": "Base"
   },
   {
-    "Id": 638933041928888690,
-    "StartTime": "2026-08-02T10:00:00",
-    "TrainingType": "Advanced Training"
+    "Id": 639111762293647837,
+    "StartTime": "11:22",
+    "TrainingType": "Base"
   },
   {
-    "Id": 639101388329529993,
-    "StartTime": "11:01",
-    "TrainingType": "sittin"
+    "Id": 639111762301459032,
+    "StartTime": "11:22",
+    "TrainingType": "Base"
+  },
+  {
+    "Id": 639111762306549400,
+    "StartTime": "11:22",
+    "TrainingType": "Base"
+  },
+  {
+    "Id": 639111763382030837,
+    "StartTime": "11:22",
+    "TrainingType": "Agility"
+  },
+  {
+    "Id": 639111763658469762,
+    "StartTime": "21:31",
+    "TrainingType": "Advanced"
   }
 ]

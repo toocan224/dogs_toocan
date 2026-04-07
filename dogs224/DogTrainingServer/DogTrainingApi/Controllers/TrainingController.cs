@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using System.Linq; // Обязательно для Any() и FirstOrDefault()
+using System.Collections.Generic; // Обязательно для List<>
 
 namespace DogTrainingApi.Controllers
 {
@@ -20,7 +22,7 @@ namespace DogTrainingApi.Controllers
             catch (Exception ex) { return StatusCode(500, $"Error: {ex.Message}"); }
         }
 
-        [HttpPost]
+        [HttpPost] // Оставили один, как и должно быть
         public IActionResult SaveSchedule([FromBody] TrainingSchedule schedule)
         {
             try
@@ -29,17 +31,20 @@ namespace DogTrainingApi.Controllers
                 if (errors.Any()) return BadRequest(errors);
 
                 schedule.Id = DateTime.Now.Ticks;
+
                 var schedules = ReadSchedulesFromFile();
                 schedules.Add(schedule);
                 SaveSchedulesToFile(schedules);
 
-                return Ok(new { message = "Saved!", id = schedule.Id });
+                return Ok(new { message = "Saved!" });
             }
-            catch (Exception ex) { return StatusCode(500, ex.Message); }
+            catch (Exception ex) 
+            { 
+                return StatusCode(500, ex.Message); 
+            }
         }
 
         [HttpPut("{id}")]
-        
         public IActionResult UpdateSchedule(long id, [FromBody] TrainingSchedule updated)
         {
             try
@@ -51,7 +56,6 @@ namespace DogTrainingApi.Controllers
                 var existing = schedules.FirstOrDefault(s => s.Id == id);
                 if (existing == null) return NotFound();
 
-                // Обновляем только те поля, что остались в модели
                 existing.StartTime = updated.StartTime;
                 existing.TrainingType = updated.TrainingType;
 
@@ -80,20 +84,14 @@ namespace DogTrainingApi.Controllers
         {
             var errors = new List<string>();
 
-            // Проверка времени HH:mm (обязательно, так как в модели теперь string)
             if (string.IsNullOrWhiteSpace(schedule.StartTime))
             {
                 errors.Add("Time is required");
             }
-            else if (!System.Text.RegularExpressions.Regex.IsMatch(schedule.StartTime, @"^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"))
+            // Упростили запись, так как using Regex уже есть вверху
+            else if (!Regex.IsMatch(schedule.StartTime, @"^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"))
             {
                 errors.Add("Invalid time format. Use HH:mm");
-            }
-
-            // Проверка Enum
-            if (!Enum.IsDefined(typeof(TrainingType), schedule.TrainingType))
-            {
-                errors.Add("Invalid training type");
             }
 
             return errors;
