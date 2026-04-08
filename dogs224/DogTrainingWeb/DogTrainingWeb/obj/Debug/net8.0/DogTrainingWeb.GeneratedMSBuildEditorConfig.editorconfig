@@ -18,12 +18,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb
 build_property._RazorSourceGeneratorDebug = 
 
+[/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/Pages/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/Pages/Manage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTWFuYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/Pages/Privacy.cshtml]

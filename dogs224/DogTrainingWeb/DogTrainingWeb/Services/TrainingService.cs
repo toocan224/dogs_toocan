@@ -9,7 +9,6 @@ namespace DogTrainingWeb.Services
     public class TrainingService
     {
         private readonly HttpClient _httpClient;
-        private readonly string _apiBaseUrl = "http://localhost:5159/api/training"; // Замените на IP вашей Raspberry Pi
 
         public TrainingService(HttpClient httpClient)
         {
@@ -18,10 +17,31 @@ namespace DogTrainingWeb.Services
 
         public async Task<bool> SaveTrainingSchedule(TrainingSchedule schedule)
         {
-            var json = JsonSerializer.Serialize(schedule);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            // Теперь просто "api/training", префикс подтянется из BaseAddress
+            var response = await _httpClient.PostAsJsonAsync("api/training", schedule);
+            return response.IsSuccessStatusCode;
+        }
 
-            var response = await _httpClient.PostAsync(_apiBaseUrl, content);
+        public async Task<List<TrainingSchedule>> GetAllSchedulesAsync()
+        {
+            // Теперь это сработает, потому что BaseAddress задан в Program.cs
+            return await _httpClient.GetFromJsonAsync<List<TrainingSchedule>>("api/training") 
+                ?? new List<TrainingSchedule>();
+        }
+
+        public async Task<bool> DeleteScheduleAsync(long id)
+        {
+            return (await _httpClient.DeleteAsync($"api/training/{id}")).IsSuccessStatusCode;
+        }
+
+        public async Task<TrainingSchedule?> GetScheduleByIdAsync(long id)
+        {
+            return await _httpClient.GetFromJsonAsync<TrainingSchedule>($"api/training/{id}");
+        }
+
+        public async Task<bool> UpdateScheduleAsync(long id, TrainingSchedule schedule)
+        {
+            var response = await _httpClient.PutAsJsonAsync($"api/training/{id}", schedule);
             return response.IsSuccessStatusCode;
         }
     }

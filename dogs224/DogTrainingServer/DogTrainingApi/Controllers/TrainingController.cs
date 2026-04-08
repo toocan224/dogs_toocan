@@ -21,7 +21,24 @@ namespace DogTrainingApi.Controllers
             try { return Ok(ReadSchedulesFromFile()); }
             catch (Exception ex) { return StatusCode(500, $"Error: {ex.Message}"); }
         }
-
+        [HttpGet("{id}")]
+        public IActionResult GetScheduleById(long id)
+        {
+            try
+            {
+                var schedules = ReadSchedulesFromFile();
+                var item = schedules.FirstOrDefault(s => s.Id == id);
+                
+                if (item == null) 
+                    return NotFound(new { message = "Запись не найдена" });
+                    
+                return Ok(item);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Ошибка при поиске: {ex.Message}");
+            }
+        }
         [HttpPost] // Оставили один, как и должно быть
         public IActionResult SaveSchedule([FromBody] TrainingSchedule schedule)
         {

@@ -7,7 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddHttpClient<TrainingService>();
+// Замени порт 5159 на тот, который реально у твоего API
+builder.Services.AddHttpClient<TrainingService>(client =>
+{
+    client.BaseAddress = new Uri("http://localhost:5159/"); 
+});
 
 var app = builder.Build();
 
