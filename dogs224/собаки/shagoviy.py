@@ -1,12 +1,44 @@
+from gpiozero import OutputDevice
+from time import sleep
+
+# pins 
+step_pin = OutputDevice(6)
+dir_pin = OutputDevice(5)
+en_pin = OutputDevice(13)
 
 
-class kormushka:
-    step = 0
-    direction = 0
-    def __init__(self,step , direction):
-        self.step = step
-        self.direction = direction
-    def give(self, stepscount):
+def move_motor(steps, forward = True):
+	dir_pin.value = forward
+	step_pin.on()
+	for i in range(steps):
+		step_pin.on()
+		sleep(0.005)
+		step_pin.off()
+		sleep(0.005)
+	step_pin.off()
+def motor_off():
+	step_pin.off()
+	en_pin.on()
+def motor_on():
+	en_pin.off()
+def vibromove(time):
+	for i in range(time*5):
 
-kkk = kormushka(1,2)
-print(kkk.step)
+		move_motor(6,forward=True)
+		sleep(0.01)
+		move_motor(4,forward= False)
+		sleep(0.01)
+try:
+	while True:
+		x = int(input())
+
+		vibromove(x)
+		print("giving a bit of korm")
+
+except KeyboardInterrupt:
+	stop_motor()
+	print("program ended")
+except err:
+	stop_motor()
+	print(err)
+stop_motor()

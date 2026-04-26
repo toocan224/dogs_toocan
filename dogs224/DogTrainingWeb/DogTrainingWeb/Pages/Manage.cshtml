@@ -1,0 +1,59 @@
+@page
+@model ManageModel
+@using DogTrainingWeb.Models
+@using DogTrainingWeb.Services
+@{
+    ViewData["Title"] = "Manage Schedule";
+}
+
+<style>
+    body {
+        background-color: #363636 !important;
+        color: #ff33b8 !important;
+        font-family: 'JetBrains Mono', monospace !important;
+        font-weight: bold !important;
+    }
+    .table { color: #ff33b8 !important; border-color: #ff33b8 !important; }
+    .btn-outline-pink {
+        color: #ff33b8;
+        border: 2px solid #ff33b8;
+        background: transparent;
+        font-weight: bold;
+    }
+    .btn-outline-pink:hover {
+        background-color: #ff33b8;
+        color: #363636;
+        box-shadow: 0 0 10px #ff33b8;
+    }
+    tr { border-bottom: 1px solid #ff33b866; }
+</style>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Current Schedules</h2>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Schedules)
+            {
+                <tr>
+                    <td>@item.StartTime</td>
+                    <td>@item.TrainingType</td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-pink">Edit</a>
+                        <form method="post" asp-page-handler="Delete" asp-route-id="@item.Id" style="display:inline;">
+                            <button type="submit" class="btn btn-sm btn-outline-pink" onclick="return confirm('Delete this record?')">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-page="./Index" class="btn btn-outline-pink">Add New</a>
+</div>

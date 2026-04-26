@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using System.Linq; // Обязательно для Any() и FirstOrDefault()
+using System.Collections.Generic; // Обязательно для List<>
 
 namespace DogTrainingApi.Controllers
 {
@@ -19,8 +21,25 @@ namespace DogTrainingApi.Controllers
             try { return Ok(ReadSchedulesFromFile()); }
             catch (Exception ex) { return StatusCode(500, $"Error: {ex.Message}"); }
         }
-
-        [HttpPost]
+        [HttpGet("{id}")]
+        public IActionResult GetScheduleById(long id)
+        {
+            try
+            {
+                var schedules = ReadSchedulesFromFile();
+                var item = schedules.FirstOrDefault(s => s.Id == id);
+                
+                if (item == null) 
+                    return NotFound(new { message = "Запись не найдена" });
+                    
+                return Ok(item);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Ошибка при поиске: {ex.Message}");
+            }
+        }
+        [HttpPost] // Оставили один, как и должно быть
         public IActionResult SaveSchedule([FromBody] TrainingSchedule schedule)
         {
             try
@@ -29,13 +48,17 @@ namespace DogTrainingApi.Controllers
                 if (errors.Any()) return BadRequest(errors);
 
                 schedule.Id = DateTime.Now.Ticks;
+
                 var schedules = ReadSchedulesFromFile();
                 schedules.Add(schedule);
                 SaveSchedulesToFile(schedules);
 
-                return Ok(new { message = "Saved!", id = schedule.Id });
+                return Ok(new { message = "Saved!" });
             }
-            catch (Exception ex) { return StatusCode(500, ex.Message); }
+            catch (Exception ex) 
+            { 
+                return StatusCode(500, ex.Message); 
+            }
         }
 
         [HttpPut("{id}")]
@@ -54,9 +77,12 @@ namespace DogTrainingApi.Controllers
                 existing.TrainingType = updated.TrainingType;
 
                 SaveSchedulesToFile(schedules);
-                return Ok(new { message = "Updated!" });
+                return Ok(new { message = "Schedule updated successfully!" });
             }
-            catch (Exception ex) { return StatusCode(500, ex.Message); }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error updating schedule: {ex.Message}");
+            }
         }
 
         [HttpDelete("{id}")]
@@ -75,18 +101,15 @@ namespace DogTrainingApi.Controllers
         {
             var errors = new List<string>();
 
-            // Проверка времени (формат 18:00)
             if (string.IsNullOrWhiteSpace(schedule.StartTime))
             {
                 errors.Add("Time is required");
             }
+            // Упростили запись, так как using Regex уже есть вверху
             else if (!Regex.IsMatch(schedule.StartTime, @"^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"))
             {
-                errors.Add("Use HH:mm format (e.g. 18:30)");
+                errors.Add("Invalid time format. Use HH:mm");
             }
-
-            if (string.IsNullOrWhiteSpace(schedule.TrainingType))
-                errors.Add("Training type is required");
 
             return errors;
         }

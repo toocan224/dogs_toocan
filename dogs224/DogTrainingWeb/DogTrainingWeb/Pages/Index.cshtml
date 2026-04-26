@@ -4,6 +4,69 @@
     ViewData["Title"] = "Dog Training Scheduler";
 }
 
+<style>
+    /* Основной фон и текст */
+    body {
+        background-color: #363636 !important;
+        color: #ff33b8 !important;
+        /* Указываем JetBrains Mono (стандартное название) или просто JetBrains */
+        font-family: 'JetBrains Mono', 'JetBrains', monospace !important;
+        font-weight: bold !important;
+    }
+
+    /* Стилизуем заголовки и текст лейблов */
+    h1, h2, h3, label, p {
+        color: #ff33b8 !important;
+        font-weight: bold !important;
+    }
+
+    /* Делаем поля ввода тёмными с розовой рамкой, чтобы убрать белые пятна */
+    .form-control {
+        background-color: #2b2b2b !important;
+        color: #ff33b8 !important;
+        border: 2px solid #ff33b8 !important;
+        font-family: 'JetBrains Mono', 'JetBrains', monospace !important;
+        font-weight: bold !important;
+    }
+
+    /* Эффект свечения при клике на поле ввода */
+    .form-control:focus {
+        background-color: #1a1a1a !important;
+        box-shadow: 0 0 10px #ff33b8 !important;
+        border-color: #ff33b8 !important;
+        color: #ff33b8 !important;
+    }
+
+    /* Стилизуем кнопку под общую тематику */
+    .btn-primary {
+        background-color: #ff33b8 !important;
+        color: #363636 !important;
+        border: 2px solid #ff33b8 !important;
+        font-family: 'JetBrains Mono', 'JetBrains', monospace !important;
+        font-weight: bold !important;
+        text-transform: uppercase;
+        transition: 0.3s;
+    }
+
+    /* Эффект инверсии и свечения при наведении на кнопку */
+    .btn-primary:hover {
+        background-color: #363636 !important;
+        color: #ff33b8 !important;
+        box-shadow: 0 0 15px #ff33b8 !important;
+    }
+</style>
+<button id="startBtn" class="btn btn-primary" style="box-shadow: 0 0 20px #007bff;">
+    ПУСК
+</button>
+
+<script>
+    document.getElementById('startBtn').onclick = async () => {
+        const response = await fetch('http://localhost:5159/api/training/start', { method: 'POST' });
+        const result = await response.json();
+        alert(result.message);
+    };
+</script>
+
 <div class="text-center">
     <h1 class="display-4">Dog Training Schedule</h1>
     
@@ -15,7 +78,10 @@
 
         <div class="form-group">
             <label>Тип тренировки:</label>
-            <input asp-for="Schedule.TrainingType" class="form-control" />
+            <select asp-for="Schedule.TrainingType" 
+                asp-items="Html.GetEnumSelectList<DogTrainingWeb.Models.TrainingType>()" 
+                class="form-control">
+            </select>
         </div>
 
         <button type="submit" class="btn btn-primary">Добавить в расписание</button>

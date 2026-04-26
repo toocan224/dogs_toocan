@@ -1,1 +1,11 @@
-{"Version":1,"Hash":"J7PDiA69bq+QxiybFYoAW/81ZT1C9Kq+KbclLfe0x6Y=","Source":"DogTrainingApi","BasePath":"_content/DogTrainingApi","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}
+{
+  "Version": 1,
+  "Hash": "XNAZoJtEKXHqgXz550gQ9Clu993NWRocKO5J3/PcYrw=",
+  "Source": "DogTrainingApi",
+  "BasePath": "_content/DogTrainingApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

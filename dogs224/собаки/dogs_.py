@@ -1,25 +1,73 @@
-#import schedule
+import json
+from datetime import datetime
 import cv2
-#from random import randint
-# import mediapipe
-from shagoviy import kormushka
+import shagoviy
 import time
 import enum
 from model import prediction, model_initialization
-# import PySide6
-# import ultralytics
 import sounddevice as sd
 import soundfile as sf
+from ffpyplayer.player import MediaPlayer
+
 class dogpos(enum.Enum):
     sit = 1
     stand = 2
     lay = 3
     none = 4
-datafile = open('dog.txt', 'w')
-datafile.write('1')
+REPORTS_FILE = 'training_reports.json'
+
+
+
+def play_video_with_audio(position):
+    video_path = f"{position}_video.mp4"
+    player = MediaPlayer(video_path)
+    cap = cv2.VideoCapture(video_path)
+    
+    while True:
+        grabbed, frame = cap.read()
+        audio_frame, val = player.get_frame()        
+        if not grabbed:
+            break
+            
+        if cv2.waitKey(28) & 0xFF == ord('q'):
+            break
+            
+        cv2.imshow('Video', frame)
+        
+        if val == 'eof':
+            break
+            
+    cap.release()
+    cv2.destroyAllWindows()
+
+
+def log_training_result(command, is_success, duration):
+    new_report = {
+        "SessionId": int(time.time()),
+        "DateTime": datetime.now().isoformat(),
+        "Command": command,
+        "IsSuccess": is_success,
+        "DurationSeconds": round(duration, 2)
+    }
+    try:  
+        try:
+            with open(REPORTS_FILE, 'r') as f:
+                reports = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            reports = []
+        reports.append(new_report)
+        with open(REPORTS_FILE, 'w') as f:
+            json.dump(reports, f, indent=4)
+        print(f"Аналитика сохранена: Success={is_success}")
+    except Exception as e:
+        print(f"Ошибка сохранения аналитики: {e}")
+
+
 dog_position = dogpos.none
 print(dog_position.name)
 AIMODEL = model_initialization()
+
+
 def sound_play(command):
     audio_data, sample_rate = sf.read(f'{command}.wav')
     sd.play(audio_data, sample_rate)
@@ -36,40 +84,32 @@ def sound_rec(command):
 
 
 def scan_of_dogs(needed_position):
+    shagoviy.motor_on()
+    is_success = False
     sound_play(needed_position)
+    play_video_with_audio(needed_position)
+    
     global dog_position
+    start_time = time.time()
     checking_time = 0
     cap = cv2.VideoCapture(0)  # 0 — это индекс камеры
     if not cap.isOpened():
         print("Ошибка: Не удалось открыть камеру.")
         return
     photo_count = 0
-    # scan_predict = {'predictions': [
-    #     {'x': 0,
-    #      'y': 0,
-    #      'width': 0,
-    #      'height': 0,
-    #      'confidence': 0,
-    #      'class': 'none',
-    #      'class_id': 4,
-    #      'detection_id': '',
-    #      'image_path': '',
-    #      'prediction_type': 'ObjectDetectionModel'}
-    # ]
-    #     , 'image': {'width': '0', 'height': ''}
-    # }
-#   ''' (((scan_predict['predictions'])[0])['class_id'])'''
-    while not (dog_position == needed_position) or checking_time >= 180:
-        # Захват кадра с камеры
-        ret, frame = cap.read()
-        if not ret:
-            print("Ошибка: Не удалось получить кадр.")
+    while True:
+        elapsed_time = time.time() - start_time
+        if elapsed_time >= 180: #собаки тупят>3минут оффаем
             break
-
+        if dog_position == needed_position:
+            shagoviy.vibromove(5)
+            shagoviy.motor_off()
+            is_success = True
         # Сохранение кадра в файл
         photo_name = "photo_.jpg"
         cv2.imwrite(photo_name, frame)
         print(f"Сохранено фото: photo_")
+        photo_count+=1
         scan_predict = prediction('photo_.jpg', AIMODEL)
         try:
             dog_position = (((scan_predict['predictions'])[0])['class'])
@@ -78,23 +118,19 @@ def scan_of_dogs(needed_position):
             dog_position = dogpos.none.name
         # dog_position = (((scan_predict['predictions'])[0])['class_id'])
 
-        cv2.imshow('Image', frame)
-        cv2.waitKey(0)
+        
 
-        # Ожидание 1 секунды
+        
         time.sleep(0.3)
         checking_time += 0.4
 
 
         cv2.destroyAllWindows()
     textfile = open('dog.txt', 'w')
-    if dog_position == needed_position:
-        kormushka.give()
-        textfile.write('1')
-    else:
-        textfile.write('0')
-    # Освобождение камеры
     cap.release()
     print("Камера освобождена. Завершение работы.")
+    total_duration = time.time() - start_time
+    log_training_result(needed_position, is_success, total_duration)
+
 if __name__ == '__main__':
     scan_of_dogs(dogpos.sit.name)

@@ -1,4 +1,4 @@
-using DogTrainingApi.Models;
+using DogTrainingWeb.Models;
 using DogTrainingWeb.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
