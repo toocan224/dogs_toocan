@@ -2,14 +2,25 @@ import schedule
 import time
 import json
 import os
+import dogs_
 
 DATA_FILE = "trainingData.json"
 last_modified_time = 0
 
 def run_training(training_id, training_type):
-    print(f"[{time.strftime('%H:%M:%S')}] {training_type} (ID: {training_id})")
-    
+    # 1. training_type из JSON — это строка (например, "sit").
+    # Чтобы превратить её в Enum (если нужно), используем dogs_.dogpos[training_type]
+    try:
+        position = dogs_.dogpos[training_type]
+    except KeyError:
+        print(f"Ошибка: Тип тренировки '{training_type}' не найден в Enum!")
+        return
 
+    # 2. Теперь training_id официально в руках!
+    print(f"[{time.strftime('%H:%M:%S')}] Начинаем: {training_type} (ID в базе: {training_id})")
+    
+    # 3. Пробрасываем ID дальше в сканер, чтобы он улетел в аналитику
+    dogs_.scan_of_dogs(position, training_id)
 def reload_if_changed():
     global last_modified_time
     

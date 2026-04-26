@@ -1,41 +1,44 @@
-import gpiozero
+from gpiozero import OutputDevice
 from time import sleep
 
-# Используем альтернативный метод управления
-step = gpiozero.LED(5) # Используем как LED для простоты
-direction = gpiozero.LED(4)
+# pins 
+step_pin = OutputDevice(6)
+dir_pin = OutputDevice(5)
+en_pin = OutputDevice(13)
 
-direction.on() # Направление
 
-print("Начинаю агрессивный тест...")
+def move_motor(steps, forward = True):
+	dir_pin.value = forward
+	step_pin.on()
+	for i in range(steps):
+		step_pin.on()
+		sleep(0.005)
+		step_pin.off()
+		sleep(0.005)
+	step_pin.off()
+def motor_off():
+	step_pin.off()
+	en_pin.on()
+def motor_on():
+	en_pin.off()
+def vibromove(time):
+	for i in range(time*5):
+
+		move_motor(6,forward=True)
+		sleep(0.01)
+		move_motor(4,forward= False)
+		sleep(0.01)
 try:
-    while True:
-        step.on()
-        sleep(0.05) # Очень длинный импульс (50мс)
-        step.off()
-        sleep(0.05)
-        print("Импульс отправлен")
+	while True:
+		x = int(input())
+
+		vibromove(x)
+		print("giving a bit of korm")
+
 except KeyboardInterrupt:
-    print("Стоп")
-
-class kormushka:
-    step = 0
-    direction = 0
-    def __init__(self,step , direction):
-        self.step = step
-        self.direction = direction
-    def give(self, stepstime):
-        step.on()
-        for i in range(stepstime//0.05):
-            direction.on()
-            sleep(0.1) # Очень длинный импульс (50мс)
-            direction.off()
-            sleep(0.05)
-        step.off()
-
-        
-
-        
-
-kkk = kormushka(1,1)
-print(kkk.step)
+	stop_motor()
+	print("program ended")
+except err:
+	stop_motor()
+	print(err)
+stop_motor()

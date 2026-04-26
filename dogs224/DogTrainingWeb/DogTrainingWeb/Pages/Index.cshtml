@@ -55,7 +55,17 @@
         box-shadow: 0 0 15px #ff33b8 !important;
     }
 </style>
+<button id="startBtn" class="btn btn-primary" style="box-shadow: 0 0 20px #007bff;">
+    ПУСК
+</button>
 
+<script>
+    document.getElementById('startBtn').onclick = async () => {
+        const response = await fetch('http://localhost:5159/api/training/start', { method: 'POST' });
+        const result = await response.json();
+        alert(result.message);
+    };
+</script>
 
 <div class="text-center">
     <h1 class="display-4">Dog Training Schedule</h1>

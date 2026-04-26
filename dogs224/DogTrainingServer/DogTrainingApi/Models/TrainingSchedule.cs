@@ -16,8 +16,8 @@ namespace DogTrainingApi.Models // В проекте Web проверь, что�
 
     public enum TrainingType
     {
+        sit,
         Base,
-        Advanced,
         Agility
     }
 }
