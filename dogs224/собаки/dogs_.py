@@ -84,6 +84,7 @@ def sound_rec(command):
 
 
 def scan_of_dogs(needed_position):
+    shagoviy.motor_on()
     is_success = False
     sound_play(needed_position)
     play_video_with_audio(needed_position)
@@ -101,7 +102,8 @@ def scan_of_dogs(needed_position):
         if elapsed_time >= 180: #собаки тупят>3минут оффаем
             break
         if dog_position == needed_position:
-            vibromove(5)
+            shagoviy.vibromove(5)
+            shagoviy.motor_off()
             is_success = True
         # Сохранение кадра в файл
         photo_name = "photo_.jpg"
