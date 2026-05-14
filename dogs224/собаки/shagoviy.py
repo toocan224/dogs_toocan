@@ -24,21 +24,24 @@ def motor_on():
 def vibromove(time):
 	for i in range(time*5):
 
-		move_motor(6,forward=True)
+		move_motor(8,forward=True)
 		sleep(0.01)
-		move_motor(4,forward= False)
+		move_motor(6,forward= False)
 		sleep(0.01)
-try:
-	while True:
-		x = int(input())
+#try:
+#	while True:
+#		x = int(input())
+#
+#		vibromove(x)
+#		print("giving a bit of korm")
+#
+#except KeyboardInterrupt:
+#	motor_off()
+#	print("program ended")
+#except err:
+#	motor_off()
+#	print(err)
+motor_on()
+vibromove(10)
+motor_off()
 
-		vibromove(x)
-		print("giving a bit of korm")
-
-except KeyboardInterrupt:
-	stop_motor()
-	print("program ended")
-except err:
-	stop_motor()
-	print(err)
-stop_motor()
