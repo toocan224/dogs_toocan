@@ -1,27 +1,7 @@
 [
   {
     "Id": 639111762306549400,
-    "StartTime": "11:22",
-    "TrainingType": "Base"
-  },
-  {
-    "Id": 639111763382030837,
-    "StartTime": "21:03",
-    "TrainingType": "Agility"
-  },
-  {
-    "Id": 639111763658469762,
-    "StartTime": "14:44",
-    "TrainingType": "Base"
-  },
-  {
-    "Id": 639112640943592725,
-    "StartTime": "11:56",
-    "TrainingType": "Advanced"
-  },
-  {
-    "Id": 639118676231284012,
-    "StartTime": "12:02",
-    "TrainingType": "Agility"
+    "StartTime": "21:45",
+    "TrainingType": "sit"
   }
 ]

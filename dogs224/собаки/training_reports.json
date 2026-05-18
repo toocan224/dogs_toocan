@@ -1,79 +1,16 @@
 [
     {
-        "SessionId": 1777994956,
-        "DateTime": "2026-05-05T20:29:16.288525",
+        "SessionId": 639111762306549400,
+        "DateTime": "2026-05-14T21:25:08.221387",
         "Command": "sit",
         "IsSuccess": true,
-        "DurationSeconds": 6.95
+        "DurationSeconds": 56.01
     },
     {
-        "SessionId": 1777995174,
-        "DateTime": "2026-05-05T20:32:54.826904",
+        "SessionId": 639111762306549400,
+        "DateTime": "2026-05-14T21:45:28.466963",
         "Command": "sit",
         "IsSuccess": true,
-        "DurationSeconds": 7.85
-    },
-    {
-        "SessionId": 1777995660,
-        "DateTime": "2026-05-05T20:41:00.417766",
-        "Command": "sit",
-        "IsSuccess": true,
-        "DurationSeconds": 18.87
-    },
-    {
-        "SessionId": 1777998383,
-        "DateTime": "2026-05-05T21:26:23.992109",
-        "Command": "sit",
-        "IsSuccess": true,
-        "DurationSeconds": 20.69
-    },
-    {
-        "SessionId": 1777998500,
-        "DateTime": "2026-05-05T21:28:20.542673",
-        "Command": "sit",
-        "IsSuccess": false,
-        "DurationSeconds": 37.6
-    },
-    {
-        "SessionId": 1777998565,
-        "DateTime": "2026-05-05T21:29:25.697875",
-        "Command": "sit",
-        "IsSuccess": true,
-        "DurationSeconds": 18.38
-    },
-    {
-        "SessionId": 1777998809,
-        "DateTime": "2026-05-05T21:33:29.422277",
-        "Command": "sit",
-        "IsSuccess": false,
-        "DurationSeconds": 25.58
-    },
-    {
-        "SessionId": 1777998919,
-        "DateTime": "2026-05-05T21:35:19.988107",
-        "Command": "sit",
-        "IsSuccess": false,
-        "DurationSeconds": 78.47
-    },
-    {
-        "SessionId": 1777998981,
-        "DateTime": "2026-05-05T21:36:21.079930",
-        "Command": "sit",
-        "IsSuccess": false,
-        "DurationSeconds": 32.84
-    },
-    {
-        "SessionId": 1777999081,
-        "DateTime": "2026-05-05T21:38:01.853075",
-        "Command": "sit",
-        "IsSuccess": false,
-        "DurationSeconds": 11.84
-    },
-    {
-        "SessionId": 1778000293,
-        "DateTime": "2026-05-05T21:58:13.051439",
-        "Command": "sit",
-        "IsSuccess": true,
-        "DurationSeconds": 46.75
+        "DurationSeconds": 16.01
     }
 ]

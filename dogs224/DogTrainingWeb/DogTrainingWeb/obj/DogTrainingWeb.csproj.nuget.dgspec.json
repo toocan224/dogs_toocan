@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/DogTrainingWeb.csproj": {}
+    "/home/ilya/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/DogTrainingWeb.csproj": {}
   },
   "projects": {
-    "/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/DogTrainingWeb.csproj": {
+    "/home/ilya/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/DogTrainingWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/DogTrainingWeb.csproj",
+        "projectUniqueName": "/home/ilya/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/DogTrainingWeb.csproj",
         "projectName": "DogTrainingWeb",
-        "projectPath": "/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/DogTrainingWeb.csproj",
+        "projectPath": "/home/ilya/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/DogTrainingWeb.csproj",
         "packagesPath": "/home/ilya/.nuget/packages/",
-        "outputPath": "/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/obj/",
+        "outputPath": "/home/ilya/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ilya/.nuget/NuGet/NuGet.Config"
@@ -56,7 +56,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/8.0.116/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.126/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

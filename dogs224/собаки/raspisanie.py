@@ -3,15 +3,15 @@ import time
 import json
 import os
 import dogs_
-
-DATA_FILE = "trainingData.json"
+import shagoviy
+DATA_FILE = "/home/ilya/dogs_toocan/dogs224/DogTrainingServer/DogTrainingApi/trainingData.json"
 last_modified_time = 0
 
 def run_training(training_id, training_type):
     # 1. training_type из JSON — это строка (например, "sit").
     # Чтобы превратить её в Enum (если нужно), используем dogs_.dogpos[training_type]
     try:
-        position = dogs_.dogpos[training_type]
+        position = dogs_.dogpos[training_type].name
     except KeyError:
         print(f"Ошибка: Тип тренировки '{training_type}' не найден в Enum!")
         return
@@ -21,10 +21,12 @@ def run_training(training_id, training_type):
     
     # 3. Пробрасываем ID дальше в сканер, чтобы он улетел в аналитику
     dogs_.scan_of_dogs(position, training_id)
+    shagoviy.motor_off()
 def reload_if_changed():
     global last_modified_time
     
     if not os.path.exists(DATA_FILE):
+        print("FILE NOT EXIXTS")
         return
     current_mtime = os.path.getmtime(DATA_FILE)
     if current_mtime > last_modified_time:

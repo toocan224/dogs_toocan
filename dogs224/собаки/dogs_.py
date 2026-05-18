@@ -42,21 +42,31 @@ def play_video_with_audio(position):
     if not os.path.exists(video_path):
         print(f"Видео {video_path} не найдено!")
         return
+    
+    # ... внутри функции play_video_with_audio ...
+    my_env = os.environ.copy()
+    my_env["DISPLAY"] = ":0" # Указывает на основной экран малинки
 
+   
+#    cmd = [
+#        "cvlc", "-I", "dummy", "--play-and-exit", 
+#        "--fullscreen", "--no-video-title-show", 
+#        video_path
+#    ]
     print(f"Запускаю видео для атлетов: {position}")
-    # Используем cvlc (VLC без интерфейса) — он идеально работает на Pi 5
-    # --fullscreen развернет на весь экран, --play-and-exit закроет после конца
     try:
-        subprocess.run([
-            "cvlc", "--fullscreen", "--play-and-exit", "--no-video-title-show", video_path
-        ], check=True)
+#       subprocess.run([
+#            "cvlc", "-I","dummy","--fullscreen", "--play-and-exit", "--no-video-title-show", video_path
+#        ], check=True)
+        # Вместо cvlc используй это в subprocess:
+        subprocess.run(["mpv", "--fs", "--vo=gpu", "--hwdec=auto", video_path])
     except Exception as e:
         print(f"Ошибка плеера: {e}")
     time.sleep(3)
 
-def log_training_result(command, is_success, duration):
+def log_training_result(training_id, command, is_success, duration):
     new_report = {
-        "SessionId": int(time.time()),
+        "SessionId": training_id,
         "DateTime": datetime.now().isoformat(),
         "Command": command,
         "IsSuccess": is_success,
@@ -96,7 +106,7 @@ def sound_rec(command):
     sf.write(f"{command.name}.wav", audio_data, sample_rate)
     print(f"Запись сохранена в {command.name}.name")
 
-def scan_of_dogs(needed_position):
+def scan_of_dogs(needed_position, training_id):
     shagoviy.motor_on()
     is_success = False
     
@@ -131,7 +141,7 @@ def scan_of_dogs(needed_position):
 
             # 3. ПРЯМОЙ ИНФЕРЕНС (без записи на диск!)
             # Передаем frame напрямую, это в 10 раз быстрее
-            result = model.infer(frame, confidence = 0.75)[0] # inference возвращает список для батча
+            result = model.infer(frame, confidence = 0.4)[0] # inference возвращает список для батча
             print(result)
             try:
                 # В локальном inference структура ответа чуть отличается
@@ -146,13 +156,13 @@ def scan_of_dogs(needed_position):
                 dog_position = "none"
             #cv2.imshow('camera', frame)
             #cv2.waitKey(1)
-            cv2.namedWindow("camera", cv2.WINDOW_AUTOSIZE)
-            cv2.imshow("camera", frame)
+            #cv2.namedWindow("camera", cv2.WINDOW_AUTOSIZE)
+            #cv2.imshow("camera", frame)
         
             # Этот waitKey — "сердце" OpenCV. Без него картинки не будет!
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-                print("Выход по нажатию Q")
-                break
+            #if cv2.waitKey(1) & 0xFF == ord('q'):
+                #print("Выход по нажатию Q")
+                #break
             if dog_position == needed_position:
                 print('УСПЕШНО! Выдаю вкусняшку.')
                 shagoviy.vibromove(5)
@@ -166,7 +176,7 @@ def scan_of_dogs(needed_position):
         cap.release()
         shagoviy.motor_off()
         total_duration = time.time() - start_time
-        log_training_result(needed_position, is_success, total_duration)
+        log_training_result(training_id, needed_position, is_success, total_duration)
 '''
 
 def scan_of_dogs(needed_position):
@@ -214,5 +224,5 @@ def scan_of_dogs(needed_position):
     log_training_result(needed_position, is_success, total_duration)
 '''
 if __name__ == '__main__':
-    scan_of_dogs(dogpos.sit.name)
+    scan_of_dogs(dogpos.sit.name, 1)
 
