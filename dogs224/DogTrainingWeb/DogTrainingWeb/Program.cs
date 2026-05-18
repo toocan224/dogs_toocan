@@ -10,7 +10,7 @@ builder.Services.AddRazorPages();
 // Замени порт 5159 на тот, который реально у твоего API
 builder.Services.AddHttpClient<TrainingService>(client =>
 {
-    client.BaseAddress = new Uri("http://localhost:5159/"); 
+    client.BaseAddress = new Uri("http://192.168.1.70:5159/"); 
 });
 
 var app = builder.Build();
