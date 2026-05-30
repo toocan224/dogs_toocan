@@ -1,32 +1,167 @@
 [
   {
-    "Id": 639157391887957565,
+    "Id": 639157450000000001,
+    "StartTime": "10:00",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000002,
+    "StartTime": "10:15",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000003,
+    "StartTime": "10:30",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000004,
+    "StartTime": "10:45",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000005,
+    "StartTime": "11:00",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000006,
+    "StartTime": "11:15",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000007,
+    "StartTime": "11:30",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000008,
+    "StartTime": "11:45",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000009,
     "StartTime": "12:00",
     "TrainingType": "sit"
   },
   {
-    "Id": 639157436569100212,
+    "Id": 639157450000000010,
+    "StartTime": "12:15",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000011,
+    "StartTime": "12:30",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000012,
+    "StartTime": "12:45",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000013,
+    "StartTime": "13:00",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000014,
     "StartTime": "13:15",
     "TrainingType": "sit"
   },
   {
-    "Id": 639157458356817780,
-    "StartTime": "13:51",
+    "Id": 639157450000000015,
+    "StartTime": "13:30",
     "TrainingType": "sit"
   },
   {
-    "Id": 639157459072483272,
-    "StartTime": "13:52",
+    "Id": 639157450000000016,
+    "StartTime": "13:45",
     "TrainingType": "sit"
   },
   {
-    "Id": 639157459730221144,
-    "StartTime": "13:53",
+    "Id": 639157450000000017,
+    "StartTime": "14:00",
     "TrainingType": "sit"
   },
   {
-    "Id": 639157465269662906,
-    "StartTime": "14:03",
+    "Id": 639157450000000018,
+    "StartTime": "14:15",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000019,
+    "StartTime": "14:30",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000020,
+    "StartTime": "14:45",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000021,
+    "StartTime": "15:00",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000022,
+    "StartTime": "15:15",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000023,
+    "StartTime": "15:30",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000024,
+    "StartTime": "15:45",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000025,
+    "StartTime": "16:00",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000026,
+    "StartTime": "16:15",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000027,
+    "StartTime": "16:30",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000028,
+    "StartTime": "16:45",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000029,
+    "StartTime": "17:00",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000030,
+    "StartTime": "17:15",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000031,
+    "StartTime": "17:30",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000032,
+    "StartTime": "17:45",
+    "TrainingType": "sit"
+  },
+  {
+    "Id": 639157450000000033,
+    "StartTime": "18:00",
     "TrainingType": "sit"
   }
 ]

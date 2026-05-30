@@ -45,5 +45,5 @@ if __name__ == "__main__":
     motor_on()
     vibromove(10)
     motor_off()
-    sleep(10)
+    x = input("нвжмите клавишу чтобы выйти")
 motor_off()

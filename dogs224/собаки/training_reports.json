@@ -40,5 +40,264 @@
         "Command": "sit",
         "IsSuccess": true,
         "DurationSeconds": 25.55
+    },
+    {
+        "SessionId": 639157468855243086,
+        "DateTime": "2026-05-30T14:10:51.043396",
+        "Command": "sit",
+        "IsSuccess": true,
+        "DurationSeconds": 77.12
+    },
+    {
+        "SessionId": 639157474960992952,
+        "DateTime": "2026-05-30T14:22:32.009214",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 180.73
+    },
+    {
+        "SessionId": 639157484694067209,
+        "DateTime": "2026-05-30T14:36:00.551708",
+        "Command": "sit",
+        "IsSuccess": true,
+        "DurationSeconds": 36.02
+    },
+    {
+        "SessionId": 639157484727144349,
+        "DateTime": "2026-05-30T14:36:41.737188",
+        "Command": "sit",
+        "IsSuccess": true,
+        "DurationSeconds": 18.42
+    },
+    {
+        "SessionId": 639157486178417244,
+        "DateTime": "2026-05-30T14:37:41.899247",
+        "Command": "sit",
+        "IsSuccess": true,
+        "DurationSeconds": 18.37
+    },
+    {
+        "SessionId": 639157487983386370,
+        "DateTime": "2026-05-30T14:43:23.703222",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 180.01
+    },
+    {
+        "SessionId": 639157490198173125,
+        "DateTime": "2026-05-30T14:45:15.034666",
+        "Command": "sit",
+        "IsSuccess": true,
+        "DurationSeconds": 51.54
+    },
+    {
+        "SessionId": 639157539523414234,
+        "DateTime": "2026-05-30T16:06:41.826983",
+        "Command": "sit",
+        "IsSuccess": true,
+        "DurationSeconds": 18.39
+    },
+    {
+        "SessionId": 639157450000000019,
+        "DateTime": "2026-05-30T14:33:23.451389",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 181.84
+    },
+    {
+        "SessionId": 639157450000000020,
+        "DateTime": "2026-05-30T14:48:22.203698",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 182.11
+    },
+    {
+        "SessionId": 639157450000000021,
+        "DateTime": "2026-05-30T15:03:21.819437",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 181.98
+    },
+    {
+        "SessionId": 639157450000000022,
+        "DateTime": "2026-05-30T15:18:21.595535",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 181.16
+    },
+    {
+        "SessionId": 639157450000000023,
+        "DateTime": "2026-05-30T15:33:20.539312",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 180.34
+    },
+    {
+        "SessionId": 639157450000000024,
+        "DateTime": "2026-05-30T15:48:22.203434",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 182.03
+    },
+    {
+        "SessionId": 639157450000000025,
+        "DateTime": "2026-05-30T16:03:26.043606",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 180.05
+    },
+    {
+        "SessionId": 639157450000000026,
+        "DateTime": "2026-05-30T16:18:19.675238",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 180.04
+    },
+    {
+        "SessionId": 639157450000000027,
+        "DateTime": "2026-05-30T16:33:22.362902",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 182.05
+    },
+    {
+        "SessionId": 639157450000000028,
+        "DateTime": "2026-05-30T16:48:22.106856",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 182.11
+    },
+    {
+        "SessionId": 639157450000000029,
+        "DateTime": "2026-05-30T17:03:21.658277",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 181.96
+    },
+    {
+        "SessionId": 639157450000000030,
+        "DateTime": "2026-05-30T17:18:22.330122",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 182.05
+    },
+    {
+        "SessionId": 639157450000000031,
+        "DateTime": "2026-05-30T17:33:21.881875",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 181.93
+    },
+    {
+        "SessionId": 639157450000000019,
+        "DateTime": "2026-05-30T14:33:21.276744",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 180.0
+    },
+    {
+        "SessionId": 639157450000000019,
+        "DateTime": "2026-05-30T14:33:21.615859",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 180.1
+    },
+    {
+        "SessionId": 639157450000000020,
+        "DateTime": "2026-05-30T14:48:20.463546",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 180.19
+    },
+    {
+        "SessionId": 639157450000000021,
+        "DateTime": "2026-05-30T15:03:20.463342",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 180.36
+    },
+    {
+        "SessionId": 639157450000000022,
+        "DateTime": "2026-05-30T15:17:12.780122",
+        "Command": "sit",
+        "IsSuccess": true,
+        "DurationSeconds": 112.7
+    },
+    {
+        "SessionId": 639157450000000023,
+        "DateTime": "2026-05-30T15:30:38.536416",
+        "Command": "sit",
+        "IsSuccess": true,
+        "DurationSeconds": 18.12
+    },
+    {
+        "SessionId": 639157450000000024,
+        "DateTime": "2026-05-30T15:47:27.275718",
+        "Command": "sit",
+        "IsSuccess": true,
+        "DurationSeconds": 127.09
+    },
+    {
+        "SessionId": 639157450000000025,
+        "DateTime": "2026-05-30T16:00:36.679442",
+        "Command": "sit",
+        "IsSuccess": true,
+        "DurationSeconds": 16.78
+    },
+    {
+        "SessionId": 639157450000000026,
+        "DateTime": "2026-05-30T16:16:49.993388",
+        "Command": "sit",
+        "IsSuccess": true,
+        "DurationSeconds": 89.64
+    },
+    {
+        "SessionId": 639157450000000027,
+        "DateTime": "2026-05-30T16:33:19.755929",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 180.15
+    },
+    {
+        "SessionId": 639157450000000028,
+        "DateTime": "2026-05-30T16:46:01.414121",
+        "Command": "sit",
+        "IsSuccess": true,
+        "DurationSeconds": 41.04
+    },
+    {
+        "SessionId": 639157450000000029,
+        "DateTime": "2026-05-30T17:02:06.727492",
+        "Command": "sit",
+        "IsSuccess": true,
+        "DurationSeconds": 100.58
+    },
+    {
+        "SessionId": 639157450000000030,
+        "DateTime": "2026-05-30T17:18:20.553330",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 180.19
+    },
+    {
+        "SessionId": 639157450000000031,
+        "DateTime": "2026-05-30T17:33:20.264741",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 180.06
+    },
+    {
+        "SessionId": 639157450000000032,
+        "DateTime": "2026-05-30T17:48:19.976054",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 180.11
+    },
+    {
+        "SessionId": 639157450000000033,
+        "DateTime": "2026-05-30T18:03:19.686962",
+        "Command": "sit",
+        "IsSuccess": false,
+        "DurationSeconds": 180.05
     }
 ]
