@@ -1,22 +1,12 @@
 [
   {
-    "Id": 639111762306549400,
-    "StartTime": "21:45",
+    "Id": 639157391887957565,
+    "StartTime": "12:00",
     "TrainingType": "sit"
   },
   {
-    "Id": 639157379624289879,
-    "StartTime": "00:00",
-    "TrainingType": "sit"
-  },
-  {
-    "Id": 639157379659617568,
-    "StartTime": "00:00",
-    "TrainingType": "sit"
-  },
-  {
-    "Id": 639157380008939085,
-    "StartTime": "11:11",
+    "Id": 639157436569100212,
+    "StartTime": "13:15",
     "TrainingType": "sit"
   }
 ]

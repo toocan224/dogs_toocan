@@ -3,5 +3,10 @@
     "Id": 639157391887957565,
     "StartTime": "12:00",
     "TrainingType": "sit"
+  },
+  {
+    "Id": 639157436569100212,
+    "StartTime": "13:15",
+    "TrainingType": "sit"
   }
 ]
