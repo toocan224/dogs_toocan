@@ -109,12 +109,15 @@ def sound_rec(command):
 def scan_of_dogs(needed_position, training_id):
     shagoviy.motor_on()
     is_success = False
-    
+    sound_play("umka")
+    sound_play("umka")
     # 1. Голос команды
     sound_play(needed_position)
     
     # 2. Видео-инструкция (теперь не зависнет)
     play_video_with_audio(needed_position)
+
+    sound_play(needed_position)
     
     global dog_position
     start_time = time.time()
@@ -154,19 +157,12 @@ def scan_of_dogs(needed_position, training_id):
                     dog_position = "none"
             except Exception:
                 dog_position = "none"
-            #cv2.imshow('camera', frame)
-            #cv2.waitKey(1)
-            #cv2.namedWindow("camera", cv2.WINDOW_AUTOSIZE)
-            #cv2.imshow("camera", frame)
-        
-            # Этот waitKey — "сердце" OpenCV. Без него картинки не будет!
-            #if cv2.waitKey(1) & 0xFF == ord('q'):
-                #print("Выход по нажатию Q")
-                #break
+            
             if dog_position == needed_position:
                 print('УСПЕШНО! Выдаю вкусняшку.')
                 shagoviy.vibromove(5)
                 is_success = True
+                cv2.imwrite(f'photo_{training_id}.jpg', frame)
                 break
 
             # Небольшая пауза, чтобы не перегреть проц
