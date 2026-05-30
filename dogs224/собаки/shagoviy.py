@@ -24,9 +24,9 @@ def motor_on():
 def vibromove(time):
 	for i in range(time*5):
 
-		move_motor(8,forward=True)
+		move_motor(10,forward=False)
 		sleep(0.01)
-		move_motor(6,forward= False)
+		move_motor(12,forward= True)
 		sleep(0.01)
 #try:
 #	while True:
