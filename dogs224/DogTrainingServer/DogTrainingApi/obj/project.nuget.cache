@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8dCL1PsIzwcJsNwWHMa10+uaNf3tfy5DXCmCJqLRzV542GOrbDQqU2rg1OAyDiNBHR6uI3UktRrbKof/N2dl9g==",
+  "dgSpecHash": "d+jrV4n7N039yhOAc6biyVN+V5AUmnF/Ce+VXVgnJ4j/u2LY10Tit9lIYAceyejpLnbBtFQf1YkUed1jRUR/YA==",
   "success": true,
-  "projectFilePath": "/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingServer/DogTrainingApi/DogTrainingApi.csproj",
+  "projectFilePath": "/home/ilya/dogs_toocan/dogs224/DogTrainingServer/DogTrainingApi/DogTrainingApi.csproj",
   "expectedPackageFiles": [
     "/home/ilya/.nuget/packages/microsoft.aspnetcore.openapi/8.0.16/microsoft.aspnetcore.openapi.8.0.16.nupkg.sha512",
     "/home/ilya/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

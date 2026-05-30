@@ -9,47 +9,47 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DogTrainingWeb
 build_property.RootNamespace = DogTrainingWeb
-build_property.ProjectDir = /home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/
+build_property.ProjectDir = /home/ilya/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb
+build_property.MSBuildProjectDirectory = /home/ilya/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb
 build_property._RazorSourceGeneratorDebug = 
 
-[/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/Pages/Edit.cshtml]
+[/home/ilya/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/Pages/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/Pages/Error.cshtml]
+[/home/ilya/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/Pages/Index.cshtml]
+[/home/ilya/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/Pages/Manage.cshtml]
+[/home/ilya/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/Pages/Manage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTWFuYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/Pages/Privacy.cshtml]
+[/home/ilya/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[/home/ilya/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/Pages/_ViewImports.cshtml]
+[/home/ilya/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/Pages/_ViewStart.cshtml]
+[/home/ilya/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/Pages/Shared/_Layout.cshtml]
+[/home/ilya/dogs_toocan/dogs224/DogTrainingWeb/DogTrainingWeb/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-t3rcwng2ru
