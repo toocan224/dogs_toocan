@@ -1,42 +1,22 @@
 [
   {
-    "Id": 639111762293647837,
-    "StartTime": "11:22",
-    "TrainingType": "Base"
-  },
-  {
-    "Id": 639111762301459032,
-    "StartTime": "11:22",
-    "TrainingType": "Base"
-  },
-  {
     "Id": 639111762306549400,
-    "StartTime": "11:22",
-    "TrainingType": "Base"
+    "StartTime": "21:45",
+    "TrainingType": "sit"
   },
   {
-    "Id": 639111763382030837,
-    "StartTime": "21:03",
-    "TrainingType": "Agility"
+    "Id": 639157379624289879,
+    "StartTime": "00:00",
+    "TrainingType": "sit"
   },
   {
-    "Id": 639111763658469762,
-    "StartTime": "21:31",
-    "TrainingType": "Advanced"
+    "Id": 639157379659617568,
+    "StartTime": "00:00",
+    "TrainingType": "sit"
   },
   {
-    "Id": 639112635606532928,
-    "StartTime": "23:23",
-    "TrainingType": "Advanced"
-  },
-  {
-    "Id": 639112640943592725,
-    "StartTime": "11:56",
-    "TrainingType": "Advanced"
-  },
-  {
-    "Id": 639112641566846977,
-    "StartTime": "12:33",
-    "TrainingType": "Base"
+    "Id": 639157380008939085,
+    "StartTime": "11:11",
+    "TrainingType": "sit"
   }
 ]

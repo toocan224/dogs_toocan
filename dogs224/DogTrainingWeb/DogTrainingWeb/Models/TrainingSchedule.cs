@@ -10,14 +10,13 @@ namespace DogTrainingWeb.Models // В проекте Web проверь, что�
         public string? StartTime { get; set; } 
 
         // Чтобы Enum передавался текстом ("Base"), а не числом (0)
-        [JsonConverter(typeof(JsonStringEnumConverter))]
-        public TrainingType TrainingType { get; set; }
+        // [JsonConverter(typeof(JsonStringEnumConverter))]
+        public string? TrainingType { get; set; }
     }
 
     public enum TrainingType
     {
-        Base,
-        Advanced,
-        Agility
+        sit,
+        lay
     }
 }

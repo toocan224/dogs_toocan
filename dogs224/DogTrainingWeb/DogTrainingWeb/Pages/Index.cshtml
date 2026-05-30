@@ -55,15 +55,28 @@
         box-shadow: 0 0 15px #ff33b8 !important;
     }
 </style>
-<button id="startBtn" class="btn btn-primary" style="box-shadow: 0 0 20px #007bff;">
-    ПУСК
+<button id="startBtn" class="btn btn-primary" style="box-shadow: 0 0 20px #007bff; font-weight: bold;">
+    ЗАПУСТИТЬ sit СЕЙЧАС (ЧЕРЕЗ 1 МИН)
 </button>
 
 <script>
     document.getElementById('startBtn').onclick = async () => {
-        const response = await fetch('http://192.168.1.70:5159/api/training/start', { method: 'POST' });
-        const result = await response.json();
-        alert(result.message);
+        // Динамически берем IP малинки, чтобы не хардкодить его
+        const apiHost = window.location.hostname; 
+        
+        try {
+            // Стучимся на порт твоего API (5159)
+            const response = await fetch(`http://${apiHost}:5159/api/training/start`, { method: 'POST' });
+            const result = await response.json();
+            
+            if (response.ok) {
+                alert(result.message); // Выведет: "Тренировка запланирована на HH:MM!"
+            } else {
+                alert("Ошибка: " + result.message);
+            }
+        } catch (err) {
+            alert("Не удалось связаться с сервером: " + err.message);
+        }
     };
 </script>
 

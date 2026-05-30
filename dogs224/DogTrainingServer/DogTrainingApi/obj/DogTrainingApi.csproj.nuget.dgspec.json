@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tooca\\Documents\\GitHub\\dogs_toocan\\dogs224\\DogTrainingServer\\DogTrainingApi\\DogTrainingApi.csproj": {}
+    "/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingServer/DogTrainingApi/DogTrainingApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tooca\\Documents\\GitHub\\dogs_toocan\\dogs224\\DogTrainingServer\\DogTrainingApi\\DogTrainingApi.csproj": {
+    "/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingServer/DogTrainingApi/DogTrainingApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tooca\\Documents\\GitHub\\dogs_toocan\\dogs224\\DogTrainingServer\\DogTrainingApi\\DogTrainingApi.csproj",
+        "projectUniqueName": "/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingServer/DogTrainingApi/DogTrainingApi.csproj",
         "projectName": "DogTrainingApi",
-        "projectPath": "C:\\Users\\tooca\\Documents\\GitHub\\dogs_toocan\\dogs224\\DogTrainingServer\\DogTrainingApi\\DogTrainingApi.csproj",
-        "packagesPath": "C:\\Users\\tooca\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tooca\\Documents\\GitHub\\dogs_toocan\\dogs224\\DogTrainingServer\\DogTrainingApi\\obj\\",
+        "projectPath": "/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingServer/DogTrainingApi/DogTrainingApi.csproj",
+        "packagesPath": "/home/ilya/.nuget/packages/",
+        "outputPath": "/home/ilya/Документы/GitHub/dogs_toocan/dogs224/DogTrainingServer/DogTrainingApi/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\tooca\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/ilya/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,13 +32,7 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -78,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.314/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/8.0.116/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

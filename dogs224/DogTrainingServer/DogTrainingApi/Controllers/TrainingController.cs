@@ -1,3 +1,4 @@
+
 using DogTrainingApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
@@ -14,7 +15,39 @@ namespace DogTrainingApi.Controllers
     {
         private const string DataFilePath = "trainingData.json";
         private static readonly object _fileLock = new object();
+        
 
+        [HttpPost("start")]
+        public IActionResult StartTraining()
+        {
+            try
+            {
+                // 1. Берем текущее время на Малинке и прибавляем 1 минуту
+                DateTime nextMinuteTime = DateTime.Now.AddMinutes(1);
+                
+                // 2. Форматируем в строку "HH:mm" (валидация регуляркой как раз под этот формат)
+                string startTimeStr = nextMinuteTime.ToString("HH:mm");
+
+                // 3. Создаем новую модель задачи
+                var instantTraining = new TrainingSchedule
+                {
+                    Id = DateTime.Now.Ticks, // Генерируем ID так же, как в методе SaveSchedule
+                    StartTime = startTimeStr,
+                    TrainingType = TrainingType.sit // По умолчанию ставим "sit" (в Web-части мы ее поменяли на string, так что залетит на ура)
+                };
+
+                // 4. Работаем с нашим json-файлом через уже готовые методы
+                var schedules = ReadSchedulesFromFile();
+                schedules.Add(instantTraining);
+                SaveSchedulesToFile(schedules);
+
+                return Ok(new { message = $"Тренировка запланирована на {startTimeStr}! Питон подхватит через минуту." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = $"Ошибка при создании моментальной задачи: {ex.Message}" });
+            }
+        }
         [HttpGet]
         public IActionResult GetAllSchedules()
         {
