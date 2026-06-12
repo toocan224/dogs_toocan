@@ -1,4 +1,4 @@
-@DogTrainingApi_HostAddress = http://localhost:5159
+@DogTrainingApi_HostAddress = http://0.0.0.0:5159
 
 GET {{DogTrainingApi_HostAddress}}/weatherforecast/
 Accept: application/json
