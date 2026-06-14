@@ -107,6 +107,7 @@ def sound_rec(command):
     print(f"Запись сохранена в {command.name}.name")
 
 def scan_of_dogs(needed_position, training_id):
+    reruns = 0
     shagoviy.motor_on()
     is_success = False
     sound_play("umka")
@@ -134,6 +135,17 @@ def scan_of_dogs(needed_position, training_id):
     try:
         while True:
             elapsed_time = time.time() - start_time
+            if elapsed_time >=60 and reruns <1:
+                sound_play("umka")
+                sound_play("umka")
+                # 1. Голос команды
+                sound_play(needed_position)
+                
+                # 2. Видео-инструкция (теперь не зависнет)
+                play_video_with_audio(needed_position)
+
+                sound_play(needed_position)
+                reruns+=1
             if elapsed_time >= 180:
                 print("Время вышло, собаки не справились.")
                 break
@@ -166,7 +178,7 @@ def scan_of_dogs(needed_position, training_id):
                 break
 
             # Небольшая пауза, чтобы не перегреть проц
-            time.sleep(2)
+            time.sleep(1)
             
     finally:
         cap.release()
@@ -220,5 +232,13 @@ def scan_of_dogs(needed_position):
     log_training_result(needed_position, is_success, total_duration)
 '''
 if __name__ == '__main__':
-    scan_of_dogs(dogpos.sit.name, 1)
+    print("Варианты:" \
+    "1.прошуршать мотор" \
+    "2. запустить треню")
+    x = int(input("ввЕДИТЕ ВАРИАНТ: "))
+    if x == 1:
+        shagoviy.motor_on()
+        shagoviy.vibromove(10)
+    else:    
+        scan_of_dogs(dogpos.sit.name, 1)
 
