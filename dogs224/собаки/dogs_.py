@@ -108,17 +108,19 @@ def sound_rec(command):
 
 def scan_of_dogs(needed_position, training_id):
     reruns = 0
+    good_scan_count = 0
+    dogIsHere = 0
     shagoviy.motor_on()
     is_success = False
     sound_play("umka")
     sound_play("umka")
     # 1. Голос команды
-    sound_play(needed_position)
+    # sound_play(needed_position)
     
-    # 2. Видео-инструкция (теперь не зависнет)
-    play_video_with_audio(needed_position)
+    # # 2. Видео-инструкция (теперь не зависнет)
+    # play_video_with_audio(needed_position)
 
-    sound_play(needed_position)
+    # sound_play(needed_position)
     
     global dog_position
     start_time = time.time()
@@ -135,9 +137,16 @@ def scan_of_dogs(needed_position, training_id):
     try:
         while True:
             elapsed_time = time.time() - start_time
-            if elapsed_time >=60 and reruns <1:
+            #собака не пришла => через какое-то время проигрываем подзыв
+            #собака пришла=>первый раз запускаем команду
+            # собака пришла и тупит => через какое-то время проигрываем команду еще раз
+
+            if dogIsHere==0 and elapsed_time >=60 and reruns <2:
                 sound_play("umka")
                 sound_play("umka")
+                
+                reruns+=1
+            elif dogIsHere == 1 and good_scan_count >=6:
                 # 1. Голос команды
                 sound_play(needed_position)
                 
@@ -145,7 +154,6 @@ def scan_of_dogs(needed_position, training_id):
                 play_video_with_audio(needed_position)
 
                 sound_play(needed_position)
-                reruns+=1
             if elapsed_time >= 180:
                 print("Время вышло, собаки не справились.")
                 break
@@ -161,9 +169,22 @@ def scan_of_dogs(needed_position, training_id):
             try:
                 # В локальном inference структура ответа чуть отличается
                 if len(result.predictions) > 0:
+                    dogIsHere = 1
+                    if good_scan_count == 0:
+                        # 1. Голос команды
+                        sound_play(needed_position)
+                        
+                        # 2. Видео-инструкция (теперь не зависнет)
+                        play_video_with_audio(needed_position)
+
+                        sound_play(needed_position)
+
+
+                    # dog_appear_time = time.time()-start_time
                     dog_position = result.predictions[0].class_name
                     confidence  = result.predictions[0].confidence
                     print(f"Вижу позу: {dog_position}, Уверенность: {confidence}")
+                    good_scan_count +=1
                 else:
                     print("Не вижу собак")
                     dog_position = "none"
