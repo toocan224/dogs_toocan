@@ -27,6 +27,11 @@ CLIENT = InferenceHTTPClient(
     api_key=""
 )
 '''
+import os
+
+os.environ["MODEL_CACHE_DIR"] = "/home/ilya/model_cache"
+os.environ["INFERENCE_HOME"] = "/home/ilya/model_cache"
+
 
 
 from inference import get_model
